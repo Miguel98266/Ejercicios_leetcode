@@ -37,15 +37,19 @@ var romanToInt = function (s) {
     roman = s.split('')
     number1=''
     number2=''
+    numsdec=[]
     
     for (let i = 0; i < roman.length-1; i++) {
         number1=roman[i]
         number2=roman[i+1]
         concat=number1+number2
         // console.log(concat)
-        console.log(romanNumbersDec[concat])
-        if (!romanNumbersDec[concat]) {
-            
+        console.log(roman[i]," , ",roman[i+1])
+        // console.log(romanNumbersDec[concat])
+        console.log(romanNumbersDec[concat]!==undefined)
+        if (romanNumbersDec[concat]!==undefined) {
+            numsdec.push(i)
+            numsdec.push(i+1)
         }
         // if (concat==romanNumbers[roman[concat]]) {
         // }
@@ -56,6 +60,6 @@ var romanToInt = function (s) {
         // console.log(romanNumbers[roman[i]])
 
     }
-    return sum
+    return numsdec
 };
 console.log(romanToInt("MCMXCIV"))
