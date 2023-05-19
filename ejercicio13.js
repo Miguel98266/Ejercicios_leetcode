@@ -17,49 +17,57 @@ M             1000
  * @return {number}
  */
 var romanToInt = function (s) {
-    romanNumbers = {
-        I: 1,
-        V: 5,
-        X: 10,
-        L: 50,
-        C: 100,
-        D: 500,
-        M: 1000
+  romanNumbers = {
+    I: 1,
+    V: 5,
+    X: 10,
+    L: 50,
+    C: 100,
+    D: 500,
+    M: 1000,
+  };
+  romanNumbersDec = {
+    IV: 4,
+    IX: 9,
+    XL: 40,
+    XC: 90,
+    CD: 400,
+    CM: 900,
+  };
+  number1 = "";
+  number2 = "";
+  numsdec = [];
+  sumdec = 0;
+  sum = 0;
+  let romanNumber = [];
+  for (let i = 0; i < s.length - 1; i++) {
+    number1 = s[i];
+    number2 = s[i + 1];
+    concat = number1 + number2;
+    // console.log(concat)
+    // console.log(roman[i]," , ",roman[i+1])
+    // console.log(romanNumbersDec[concat])
+    // console.log(romanNumbersDec[concat]!==undefined)
+    if (romanNumbersDec[concat] !== undefined) {
+      numsdec.push(i);
+      numsdec.push(i + 1);
+      sumdec += romanNumbersDec[concat];
     }
-    romanNumbersDec={
-        IV:4,
-        IX:9,
-        XL:40,
-        XC:90,
-        CD:400,
-        CM:900
-    }
-    roman = s.split('')
-    number1=''
-    number2=''
-    numsdec=[]
-    
-    for (let i = 0; i < roman.length-1; i++) {
-        number1=roman[i]
-        number2=roman[i+1]
-        concat=number1+number2
-        // console.log(concat)
-        console.log(roman[i]," , ",roman[i+1])
-        // console.log(romanNumbersDec[concat])
-        console.log(romanNumbersDec[concat]!==undefined)
-        if (romanNumbersDec[concat]!==undefined) {
-            numsdec.push(i)
-            numsdec.push(i+1)
-        }
-        // if (concat==romanNumbers[roman[concat]]) {
-        // }
-    }
-    sum = 0
-    for (let i = 0; i < roman.length; i++) {
-        sum += romanNumbers[roman[i]]
-        // console.log(romanNumbers[roman[i]])
+  }
+  console.log(sumdec);
 
-    }
-    return numsdec
+  for (let i = 0; i < s.length; i++) {
+    romanNumber.push(i);
+  }
+  // console.log(romanNumber)
+  res = romanNumber.filter((item) => !numsdec.includes(item));
+  console.log(res);
+
+  for (const obj of res) {
+    console.log(s[obj]);
+    sum += romanNumbers[s[obj]];
+  }
+  console.log(sum);
+  return sum + sumdec;
 };
-console.log(romanToInt("MCMXCIV"))
+console.log(romanToInt("MCMXII"));
