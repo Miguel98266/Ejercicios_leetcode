@@ -30,21 +30,24 @@ var romanToInt = function (s) {
         IV:4,
         IX:9,
         XL:40,
-        LC:90,
+        XC:90,
         CD:400,
-        DM:900
+        CM:900
     }
     roman = s.split('')
     number1=''
     number2=''
+    
     for (let i = 0; i < roman.length-1; i++) {
         number1=roman[i]
         number2=roman[i+1]
         concat=number1+number2
         // console.log(concat)
         console.log(romanNumbersDec[concat])
-        // if (concat==romanNumbers[roman[concat]]) {
+        if (!romanNumbersDec[concat]) {
             
+        }
+        // if (concat==romanNumbers[roman[concat]]) {
         // }
     }
     sum = 0
@@ -55,4 +58,4 @@ var romanToInt = function (s) {
     }
     return sum
 };
-console.log(romanToInt("IV"))
+console.log(romanToInt("MCMXCIV"))
