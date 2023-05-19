@@ -26,15 +26,33 @@ var romanToInt = function (s) {
         D: 500,
         M: 1000
     }
-    
+    romanNumbersDec={
+        IV:4,
+        IX:9,
+        XL:40,
+        LC:90,
+        CD:400,
+        DM:900
+    }
     roman = s.split('')
-
+    number1=''
+    number2=''
+    for (let i = 0; i < roman.length-1; i++) {
+        number1=roman[i]
+        number2=roman[i+1]
+        concat=number1+number2
+        // console.log(concat)
+        console.log(romanNumbersDec[concat])
+        // if (concat==romanNumbers[roman[concat]]) {
+            
+        // }
+    }
     sum = 0
     for (let i = 0; i < roman.length; i++) {
         sum += romanNumbers[roman[i]]
-        console.log(romanNumbers[roman[i]])
+        // console.log(romanNumbers[roman[i]])
 
     }
     return sum
 };
-console.log(romanToInt("VI"))
+console.log(romanToInt("IV"))
